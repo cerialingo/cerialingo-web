@@ -65,7 +65,7 @@
   <h1 class="text-center mb-4">Target Belajar CeriaLingo SD/MI</h1>
 
   <!-- Loop per kelas -->
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 1 (Usia 6–7 tahun)</h5>
     <p><strong>Fokus:</strong> Vocabulary dasar, phonics, dan kalimat sederhana</p>
     <ul>
@@ -76,7 +76,7 @@
     </ul>
   </div>
 
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 2 (Usia 7–8 tahun)</h5>
     <p><strong>Fokus:</strong> Vocabulary lanjutan, simple sentence structure</p>
     <ul>
@@ -87,7 +87,7 @@
     </ul>
   </div>
 
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 3 (Usia 8–9 tahun)</h5>
     <p><strong>Fokus:</strong> Percakapan sederhana dan kalimat perkenalan</p>
     <ul>
@@ -98,7 +98,7 @@
     </ul>
   </div>
 
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 4 (Usia 9–10 tahun)</h5>
     <p><strong>Fokus:</strong> Grammar dasar & aktivitas harian (Present Continuous)</p>
     <ul>
@@ -109,7 +109,7 @@
     </ul>
   </div>
 
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 5 (Usia 10–11 tahun)</h5>
     <p><strong>Fokus:</strong> Deskripsi, perbandingan, dan ekspresi</p>
     <ul>
@@ -120,7 +120,7 @@
     </ul>
   </div>
 
-  <div class="kelas-section">
+  <div class="kelas-section" data-aos="fade-left" data-aos-duration="2000">
     <h5>Kelas 6 (Usia 11–12 tahun)</h5>
     <p><strong>Fokus:</strong> Teks sederhana, masa lalu & masa depan</p>
     <ul>
@@ -131,7 +131,7 @@
     </ul>
   </div>
 </div>
- <footer class="bg-dark text-white text-center py-3">
+<footer class="bg-dark text-white text-center py-3">
   <p class="mb-1">Alamat: Ds. Ngemplak RT 05 / 02 Mranggen Demak</p>
   <p class="mb-1">
     <a href="https://wa.me/6285385372988" target="_blank" class="text-white text-decoration-none">
@@ -143,10 +143,40 @@
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init();</script>
+<script>
+  AOS.init();
+</script>
+<script>
+  // Untuk dropdown bertingkat agar bisa diklik di HP
+  document.addEventListener("DOMContentLoaded", function () {
+    var dropdowns = document.querySelectorAll(".dropdown-submenu > a");
+
+    dropdowns.forEach(function (dropdownToggle) {
+      dropdownToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let submenu = this.nextElementSibling;
+        if (submenu && submenu.classList.contains("dropdown-menu")) {
+          submenu.classList.toggle("show");
+
+          // Tutup sub-menu lain yang terbuka
+          this.closest(".dropdown-menu").querySelectorAll(".dropdown-menu").forEach(function (el) {
+            if (el !== submenu) el.classList.remove("show");
+          });
+        }
+      });
+    });
+
+    // Tutup semua submenu saat klik di luar
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".dropdown-menu .show").forEach(function (el) {
+        el.classList.remove("show");
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
