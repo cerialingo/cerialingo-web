@@ -27,39 +27,41 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav ms-auto">
-    <li class="nav-item">
-      <a class="nav-link active" href="index.html">Beranda</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="tentang.html">Tentang</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="galeri.html">Galeri</a>
-    </li>
-
-    <!-- Dropdown untuk Update -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="updateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Update
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="updateDropdown">
-        <li><a class="dropdown-item" href="info.html">Info Materi</a></li>
-        <li><a class="dropdown-item" href="target.html">Target Belajar</a></li>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="updateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Update
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="updateDropdown">
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Materi</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="materi-sd.html">SD</a></li>
+                <li><a class="dropdown-item" href="materi-smp.html">SMP</a></li>
+                <li><a class="dropdown-item" href="materi-smu.html">SMU</a></li>
+                <li><a class="dropdown-item" href="materi-toefl.html">TOEFL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Target Belajar</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="target-sd.html">SD</a></li>
+                <li><a class="dropdown-item" href="target-smp.html">SMP</a></li>
+                <li><a class="dropdown-item" href="target-smu.html">SMU</a></li>
+                <li><a class="dropdown-item" href="target-toefl.html">TOEFL</a></li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="paket-harga.html">Paket Harga</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
       </ul>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="kontak.html">Kontak</a>
-    </li>
-  </ul>
-</div>
-
+    </div>
   </div>
 </nav>
-
-
-
 <!-- Banner -->
 <div class="banner text-white d-flex flex-column justify-content-center align-items-center text-center" data-aos="fade-right" data-aos-duration="2000"><br><br>
   <h1>Selamat Datang di <span class="text-warning">CeriaLingo</span></h1>
@@ -78,7 +80,7 @@
       
       <div class="col-md-4 text-center" data-aos="fade-right" data-aos-duration="2000">
         <img src="gbr_3.png" alt="Hero Image" class="img-fluid rounded-circle shadow" width="250" height="250">
-        <h5>Siti Mukaromah, M.Pd</h5>
+        <h5>Siti Mukaromah, M. Pd.</h5>
         <p>English Education Graduate</p>       
       </div>
       
@@ -90,7 +92,7 @@
         </h3>
         <p>
           Selamat datang di website resmi CeriaLingo! Layanan Les Privat Bahasa Inggris
-           untuk SD, SMP, SMA, Kelas Umum dan Kelas By Request. Belajar lebih fokus  
+           untuk SD, SMP, SMA, Toefl, Kelas Umum dan Kelas By Request. Belajar lebih fokus  
            dan menyenangkan bersama tutor berpengalaman. Jadwal fleksibel, materi sesuai 
            jenjang Pendidikan atau tujuan belajar dan tersedia sesi trial gratis untuk siswa baru. 
         </p>
@@ -146,6 +148,35 @@
 <script>
   AOS.init();
 </script>
+<script>
+  // Untuk dropdown bertingkat agar bisa diklik di HP
+  document.addEventListener("DOMContentLoaded", function () {
+    var dropdowns = document.querySelectorAll(".dropdown-submenu > a");
 
+    dropdowns.forEach(function (dropdownToggle) {
+      dropdownToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let submenu = this.nextElementSibling;
+        if (submenu && submenu.classList.contains("dropdown-menu")) {
+          submenu.classList.toggle("show");
+
+          // Tutup sub-menu lain yang terbuka
+          this.closest(".dropdown-menu").querySelectorAll(".dropdown-menu").forEach(function (el) {
+            if (el !== submenu) el.classList.remove("show");
+          });
+        }
+      });
+    });
+
+    // Tutup semua submenu saat klik di luar
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".dropdown-menu .show").forEach(function (el) {
+        el.classList.remove("show");
+      });
+    });
+  });
+</script>
 </body>
 </html>

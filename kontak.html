@@ -57,7 +57,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="bnrkontak.png" alt="Logo" width="30" height="30" class="me-2" />
+      <img src="logo.png" alt="Logo" width="30" height="30" class="me-2">
       <h5 class="mb-0 text-warning">CeriaLingo</h5>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -69,17 +69,37 @@
         <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang</a></li>
         <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="updateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Update</a>
+          <a class="nav-link dropdown-toggle" href="#" id="updateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Update
+          </a>
           <ul class="dropdown-menu" aria-labelledby="updateDropdown">
-            <li><a class="dropdown-item" href="info.html">Info Materi</a></li>
-            <li><a class="dropdown-item" href="target.html">Target Belajar</a></li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Materi</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="materi-sd.html">SD</a></li>
+                <li><a class="dropdown-item" href="materi-smp.html">SMP</a></li>
+                <li><a class="dropdown-item" href="materi-smu.html">SMU</a></li>
+                <li><a class="dropdown-item" href="materi-toefl.html">TOEFL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Target Belajar</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="target-sd.html">SD</a></li>
+                <li><a class="dropdown-item" href="target-smp.html">SMP</a></li>
+                <li><a class="dropdown-item" href="target-smu.html">SMU</a></li>
+                <li><a class="dropdown-item" href="target-toefl.html">TOEFL</a></li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="paket-harga.html">Paket Harga</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link active" href="kontak.html">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
 
 <!-- Ajakan -->
 <section class="text-center py-5 bg-light">
@@ -212,6 +232,36 @@
   const floatBtn = document.getElementById("wa-float");
   floatBtn.addEventListener("click", () => {
     window.open(waLink, "_blank");
+  });
+</script>
+<script>
+  // Untuk dropdown bertingkat agar bisa diklik di HP
+  document.addEventListener("DOMContentLoaded", function () {
+    var dropdowns = document.querySelectorAll(".dropdown-submenu > a");
+
+    dropdowns.forEach(function (dropdownToggle) {
+      dropdownToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let submenu = this.nextElementSibling;
+        if (submenu && submenu.classList.contains("dropdown-menu")) {
+          submenu.classList.toggle("show");
+
+          // Tutup sub-menu lain yang terbuka
+          this.closest(".dropdown-menu").querySelectorAll(".dropdown-menu").forEach(function (el) {
+            if (el !== submenu) el.classList.remove("show");
+          });
+        }
+      });
+    });
+
+    // Tutup semua submenu saat klik di luar
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".dropdown-menu .show").forEach(function (el) {
+        el.classList.remove("show");
+      });
+    });
   });
 </script>
 </body>
