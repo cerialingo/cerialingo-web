@@ -37,9 +37,9 @@ h1 {
 
 /* ======= BANNER ======= */
 .banner {
-  background-image: url('benner.png');
+  background-image: url('update_herosesion.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   height: 85vh;
   min-height: 400px;
